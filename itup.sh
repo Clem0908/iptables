@@ -6,6 +6,9 @@ then
 	exit -1
 fi
 
+#Enable on boot
+systemctl enable iptables
+
 # Flush old tables
 iptables -F
 ip6tables -F
