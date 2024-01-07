@@ -28,8 +28,7 @@ iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 ip6tables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
 # SSH protect against spamming
-iptables -A INPUT -p tcp --dport 22 -m state --state NEW -m recent --update --seconds 60 --hitcount 4 -j DROP
-iptables -A INPUT -p tcp --dport 22 -m state --state NEW -m recent --set
+iptables -A INPUT -p tcp --dport 22 -m recent --update --seconds 60 --hitcount 4 --set -j DROP
 
 # SSH
 iptables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
